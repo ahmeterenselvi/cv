@@ -1,0 +1,48 @@
+﻿@model List<Testimonial>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="row ">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Testimonials</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> Client Name </th>
+                                <th> Title </th>
+                                <th> Company </th>
+                                <th> Comment </th>
+                                <th> Actions </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var value in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="@value.ImageUrl" alt="image" />
+                                        <span class="pl-2">@value.ClientName</span>
+                                    </td>
+                                    <td>@value.Title</td>
+                                    <td>@value.Company</td>
+                                    <td>@value.Comment</td>
+                                    <td>
+                                        <a href="/Testimonial/EditTestimonial/@value.TestimonialId" class="btn btn-outline-warning">Edit</a>
+                                        <a href="/Testimonial/DeleteTestimonial/@value.TestimonialId" class="btn btn-outline-behance">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a asp-action="AddTestimonial" class="btn btn-outline-behance">Add Testimonial</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿@model EntityLayer.Concrete.Contact
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <form asp-action="Index" asp-controller="SubContact" method="post" class="form">
+            <div class="form-group">
+                <label for="Title" class="form-label">Title</label>
+                <input type="text" class="form-control" asp-for="Title" placeholder="@Model.Title">
+            </div>
+            <div class="form-group">
+                <label for="Description" class="form-label">Description</label>
+                <input type="text" class="form-control" asp-for="Description" placeholder="@Model.Description">
+            </div>
+            <div class="form-group">
+                <label for="Age" class="form-label">Mail</label>
+                <input type="email" class="form-control" asp-for="Mail" placeholder="@Model.Mail">
+            </div>
+            <div class="form-group">
+                <label for="Mail" class="form-label">Phone Number</label>
+                <input type="number" class="form-control" asp-for="PhoneNumber" placeholder="@Model.PhoneNumber">
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,19 @@
+﻿@model EntityLayer.Concrete.Skill
+
+@{
+    ViewData["Title"] = "AddSkill";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<form asp-action="AddSkill" asp-controller="Skill" method="post" class="form">
+    <div class="form-group">
+        <label for="Title" class="form-label">Skill Title</label>
+        <input type="text" class="form-control" asp-for="Title" placeholder="Skill Title...">
+    </div>
+    <div class="form-group">
+        <label for="Value" class="form-label">Skill Value</label>
+        <input type="text" class="form-control" asp-for="Value" placeholder="Skill Value...">
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>
+

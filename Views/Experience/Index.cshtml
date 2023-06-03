@@ -1,0 +1,44 @@
+﻿@model List<Experience>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<!-- Light table -->
+<div class="table-responsive">
+    <table class="table align-items-center table-flush">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Image</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var value in Model)
+            {
+                <tr>
+                    <td>@value.ExperienceId</td>
+                    <td>@value.Name</td>
+                    <td>@value.Date</td>
+                    <td><img src="@value.ImageUrl" alt="@value.Name" width="48" height="48" /></td>
+                    <td>@value.Description</td>
+                    <td>
+                        <div class="d-flex justify-content-md-start">
+                            <a href="/Experience/EditExperience/@value.ExperienceId" class="btn btn-success mr-2">Edit</a>
+                            <form action="/Experience/DeleteExperience/@value.ExperienceId" method="post">
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this experience?')">Delete</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+    <a href="@Url.Action("AddExperience")" class="btn btn-primary">Add New Experience</a>

@@ -1,0 +1,93 @@
+﻿@model EntityLayer.Concrete.Portfolio
+
+@{
+    ViewData["Title"] = "EditPortfolio";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="card bg-secondary shadow border-0">
+    <div class="card-body px-lg-5 py-lg-5">
+        <form asp-action="EditPortfolio" asp-controller="Portfolio" method="post" class="form">
+            <div class="form-group mb-4">
+                <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                    </div>
+                    <input class="form-control" asp-for="Name" placeholder="Name..." type="text" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-6 form-group">
+                    <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-money-coins"></i></span>
+                        </div>
+                        <input class="form-control" asp-for="Price" placeholder="Price..." type="text" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6 form-group">
+                    <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                        </div>
+                        <input class="form-control" asp-for="Completion" placeholder="Completion..." type="text" />
+                        <span asp-validation-for="Completion" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6 form-group">
+                    <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                        </div>
+                        <input class="form-control" asp-for="Platform" placeholder="Platform..." type="text" />
+                    </div>
+                </div>
+                <div class="col-6 form-group">
+                    <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
+                        </div>
+                        <select class="form-control" asp-for="Status">
+                            <option value="True">Done</option>
+                            <option value="False">In Process</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row mt-4">
+                <div class="col-6 form-group">
+                    <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-image"></i></span>
+                        </div>
+                        <input class="form-control" asp-for="ImageUrl" placeholder="Image Url 1..." type="text" />
+                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6 form-group">
+                    <div class="input-group input-group-alternative">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-image"></i></span>
+                        </div>
+                        <input class="form-control" asp-for="ImageUrl2" placeholder="Image Url 2..." type="text" />
+                        <span asp-validation-for="ImageUrl2" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mt-4">
+                <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-world-2"></i></span>
+                    </div>
+                    <input class="form-control" asp-for="ProjectUrl" placeholder="Project Url..." type="text" />
+                    <span asp-validation-for="ProjectUrl" class="text-danger"></span>
+                </div>
+            </div>
+            <div class=" text-center">
+                <button type="submit" class="btn btn-primary mt-4">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+﻿@model List<Service>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <div class="card bg-default shadow">
+            <div class="card-header bg-transparent border-0 text-center">
+                <h3 class="text-white mb-0">Services</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-dark table-flush">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" class="sort" data-sort="service-id">Service Id</th>
+                            <th scope="col" class="sort" data-sort="title">Title</th>
+                            <th scope="col" class="sort" data-sort="image">Image</th>
+                            <th scope="col" class="sort" data-sort="actions">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="list">
+                        @foreach (var value in Model)
+                        {
+                            <tr>
+                                <td class="service-id">
+                                    <span class="text-white">@value.ServiceId</span>
+                                </td>
+                                <td class="title">
+                                    <span class="text-white">@value.Title</span>
+                                </td>
+                                <td class="image">
+                                    <img alt="Service Image" src="@value.ImageUrl" class="rounded-circle img-fluid" height="48" width="48">
+                                </td>
+                                <td class="actions">
+                                    <div class="d-flex justify-content-md-start">
+                                        <a href="/Service/EditService/@value.ServiceId" class="btn btn-success mr-2">Edit</a>
+                                        <form action="/Service/DeleteService/@value.ServiceId" method="post">
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this service?')">Delete</button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<a href="@Url.Action("AddService")" class="btn btn-primary">Add New Service</a>

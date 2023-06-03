@@ -1,0 +1,27 @@
+﻿@model EntityLayer.Concrete.Experience
+
+@{
+    ViewData["Title"] = "EditExperience";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<form asp-action="EditExperience" asp-controller="Experience" method="post" class="form">
+    <div class="form-group">
+        <label for="Title" class="form-label">Name</label>
+        <input type="text" class="form-control" asp-for="Name" placeholder="@Model.Name">
+    </div>
+    <div class="form-group">
+        <label for="Value" class="form-label">Date</label>
+        <input type="text" class="form-control" asp-for="Date" placeholder="@Model.Date">
+    </div>
+    <div class="form-group">
+        <label for="Value" class="form-label">Image Url</label>
+        <input type="text" class="form-control" asp-for="ImageUrl" placeholder="@Model.ImageUrl">
+    </div>
+    <div class="form-group">
+        <label for="Value" class="form-label">Description</label>
+        <input type="text" class="form-control" asp-for="Description" placeholder="@Model.Description">
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+

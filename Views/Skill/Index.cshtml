@@ -1,0 +1,45 @@
+﻿@model List<Skill>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<!-- Light table -->
+<div class="table-responsive">
+    <table class="table align-items-center table-flush">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col" class="sort" data-sort="name">#</th>
+                <th scope="col" class="sort" data-sort="budget">Title</th>
+                <th scope="col" class="sort" data-sort="status">Value</th>
+                <th scope="col" class="sort" data-sort="completion">Edit</th>
+                <th scope="col">Delete</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody class="list">
+        <tbody class="list">
+            @foreach (var value in Model)
+            {
+            <tr>
+                <th>@value.SkillId</th>
+                <td>@value.Title</td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <span class="completion mr-2">@value.Value%</span>
+                        <div>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="@value.Value%" aria-valuemin="0" aria-valuemax="100" style="width: @value.Value%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td><a href="/Skill/EditSkill/@value.SkillId" class="btn btn-success">Edit</a></td>
+                <td><a href="/Skill/DeleteSkill/@value.SkillId" class="btn btn-danger">Delete</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <a href="@Url.Action("AddSkill")" class="btn btn-primary">Add New Skill</a>
+</div>

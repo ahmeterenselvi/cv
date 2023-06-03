@@ -1,0 +1,31 @@
+﻿@model EntityLayer.Concrete.Testimonial
+
+@{
+    ViewData["Title"] = "EditTestimonial";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<form asp-action="EditTestimonial" asp-controller="Testimonial" method="post" class="form">
+    <div class="form-group">
+        <label for="Title" class="form-label">Client Name</label>
+        <input type="text" class="form-control" asp-for="ClientName" placeholder="Client Name...">
+    </div>
+    <div class="form-group">
+        <label for="Value" class="form-label">Title</label>
+        <input type="text" class="form-control" asp-for="Title" placeholder="Title...">
+    </div>
+    <div class="form-group">
+        <label for="Value" class="form-label">Company</label>
+        <input type="text" class="form-control" asp-for="Company" placeholder="Company...">
+    </div>
+    <div class="form-group">
+        <label for="Value" class="form-label">Comment</label>
+        <input type="text" class="form-control" asp-for="Comment" placeholder="Comment...">
+    </div>
+    <div class="form-group">
+        <label for="Value" class="form-label">Image Url</label>
+        <input type="text" class="form-control" asp-for="ImageUrl" placeholder="Image Url...">
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a class="btn btn-light" href="/Testimonial/Index">Cancel</a>
+</form>

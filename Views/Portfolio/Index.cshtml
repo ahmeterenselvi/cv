@@ -1,0 +1,98 @@
+﻿@model List<Portfolio>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <div class="card bg-default shadow">
+            <div class="table-responsive">
+                <table class="table align-items-center table-dark table-flush">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" class="sort" data-sort="name">Project</th>
+                            <th scope="col" class="sort" data-sort="budget">Budget</th>
+                            <th scope="col" class="sort" data-sort="status">Status</th>
+                            <th scope="col" class="sort" data-sort="images">Images</th>
+                            <th scope="col" class="sort" data-sort="completion">Completion</th>
+                            <th scope="col" class="sort" data-sort="actions">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="list">
+                        @foreach (var value in Model)
+                        {
+                        <tr>
+                            <th scope="row">
+                                <div class="media align-items-center">
+                                    <a href="@value.ProjectUrl" class="avatar rounded-circle mr-3">
+                                        <img alt="Image placeholder" src="@value.ImageUrl">
+                                    </a>
+                                    <div class="media-body">
+                                        <a href="@value.ProjectUrl">
+                                            <span class="name mb-0 text-sm">@value.Name</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </th>
+                            <td class="budget">
+                                @value.Price
+                            </td>
+                            <td>
+                                <span class="badge badge-dot mr-4">
+                                    @if (value.Status)
+                                    {
+                                        <i class="bg-gradient-success"></i>
+                                        <span class="status">Done</span>
+                                    }
+                                    else
+                                    { <i class="bg-warning"></i>
+                                        <span class="status">In Process</span>
+                                    }
+                                </span>
+                            </td>
+                            <td>
+                                <div class="avatar-group">
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="@value.Name 1">
+                                        <img alt="@value.Name" src="@value.Image1">
+                                    </a>
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="@value.Name 2">
+                                        <img alt="@value.Name" src="@value.Image2">
+                                    </a>
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="@value.Name 3">
+                                        <img alt="@value.Name" src="@value.Image3">
+                                    </a>
+                                    <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="@value.Name 4">
+                                        <img alt="@value.Name" src="@value.Image4">
+                                    </a>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <span class="completion mr-2">@value.Completion</span>
+                                    <div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="@value.Completion%" aria-valuemin="0" aria-valuemax="100" style="width: @value.Completion%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex justify-content-md-start">
+                                    <a href="/Portfolio/EditPortfolio/@value.PortfolioId" class="btn btn-success mr-2">Edit</a>
+                                    <form action="/Portfolio/DeletePortfolio/@value.PortfolioId" method="post">
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this experience?')">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="@Url.Action("AddPortfolio")" class="btn btn-primary">Add New Portfolio</a>
